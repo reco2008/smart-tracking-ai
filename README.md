@@ -98,8 +98,5 @@ License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Contact
-For any questions or issues, feel free to reach out to me at reco200814@gmail.com.
-
-markdown
-Copy code
+For any questions or issues, feel free to reach out to me at Telalawad@hotmail.com.
 
