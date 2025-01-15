@@ -1,0 +1,18 @@
+/ProjectFolder
+  ├── /01_Analysis_And_Design
+  │     ├── 1.1_Requirements_Analysis.txt
+  │     ├── 1.2_Initial_Designs.txt
+  ├── /02_Development_Basic
+  │     ├── 2.1_Database_Development.txt
+  │     ├── 2.2_Backend_Development.txt
+  │     ├── 2.3_Frontend_Development.txt
+  ├── /03_Integration_And_Testing
+  │     ├── 3.1_Teltonika_Integration_Testing.txt
+  │     ├── 3.2_Performance_And_Error_Analysis.txt
+  ├── /04_Advanced_Features
+  │     ├── 4.1_Additional_Reports.txt
+  │     ├── 4.2_UI_Enhancements.txt
+  │     ├── 4.3_Alert_Features.txt
+  ├── /05_Final_Tests_And_Delivery
+  │     ├── 5.1_Final_System_Testing.txt
+  │     ├── 5.2_Project_Delivery_and_Training.txt
