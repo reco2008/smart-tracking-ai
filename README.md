@@ -1,72 +1,53 @@
-# Smart Tracking AI Project
+# Vehicle Tracking System
 
-Welcome to the Smart Tracking AI project repository. This document provides a comprehensive guide to the project's goals, features, and technical specifications. Please ensure to review all sections and provide feedback or contributions as needed.
+This project is a comprehensive solution for vehicle tracking with features such as real-time monitoring, report generation, and maintenance tracking. The system supports Teltonika devices initially, with the capability to integrate other devices in the future.
+
+## Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Features](#features)
+3. [System Requirements](#system-requirements)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [Development Stages](#development-stages)
+7. [Contributing](#contributing)
+8. [License](#license)
+
+---
 
 ## Project Overview
-The Smart Tracking AI project is an advanced vehicle tracking and fleet management solution that integrates AI-driven insights, real-time monitoring, and enhanced user experiences. Its aim is to address modern logistics and fleet challenges by combining state-of-the-art technology with user-friendly features.
+
+The Vehicle Tracking System allows fleet managers to track vehicles in real-time, generate reports on driving behavior, speed violations, maintenance, and more. It provides detailed insights into daily trips, driver performance, and vehicle condition.
 
 ---
 
 ## Features
-### Core Features
-1. **Vehicle Tracking and Monitoring:**
-   - Real-time GPS tracking.
-   - Integration with map providers (Google Maps, Bing Maps, Yandex Maps).
-   - Traffic congestion alerts and rerouting suggestions.
-   - Historical route replay.
 
-2. **Delivery Service Integration:**
-   - Compatibility with DHL, UPS, and other delivery services.
-   - Real-time package tracking and optimization.
-
-3. **Driver and Vehicle Safety:**
-   - Monitoring harsh braking and acceleration.
-   - SOS emergency feature.
-   - Driver fatigue alerts and notifications.
-   - Predictive maintenance and repair scheduling.
-
-4. **AI-Driven Features:**
-   - Accident detection.
-   - Traffic pattern analysis.
-   - Driver behavior analysis.
-
-5. **Sensor Integration:**
-   - Temperature, humidity, and movement monitoring.
-
-6. **Customizability:**
-   - Role-based access control.
-   - Multi-language support.
+- **Real-time Vehicle Tracking**: Track the location of vehicles using GPS devices (Teltonika supported initially).
+- **Driver Behavior Reports**: Analyze unsafe driving behavior (e.g., speeding, harsh braking).
+- **Maintenance Reports**: Track vehicle maintenance and service history.
+- **Daily Trip Reports**: View detailed daily reports for each vehicle.
+- **Notifications**: Receive alerts for speed violations, unsafe driving, and other custom conditions.
+- **Exportable Reports**: Generate and export reports in PDF and Excel formats.
+- **Scalable**: Supports additional devices beyond Teltonika in future updates.
 
 ---
 
-## Technical Documentation
-The full technical documentation, including system architecture, integration methods, and detailed feature explanations, is available in the `docs/technical_documentation.md` file.
+## System Requirements
+
+- **Operating System**: Windows
+- **Database**: MySQL
+- **Backend**: ASP.NET Core
+- **Frontend**: React (or any front-end framework for better UI)
+- **GPS Devices**: Teltonika (initially, with potential for other devices)
 
 ---
 
-## Setup Instructions
-To get started with the project:
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/reco2008/smart-tracking-ai.git
-   ```
-2. Install dependencies as per the `requirements.txt` file.
-3. Configure database settings in the `config/database_config.yaml` file.
-4. Run the server:
-   ```bash
-   python manage.py runserver
-   ```
-5. Access the application at `http://localhost:8000`.
+## Installation
 
----
-
-## Contribution
-Contributions are welcome! Please fork the repository, create a new branch, and submit a pull request. Ensure your code adheres to the repository's coding standards and guidelines.
-
----
-
-## Contact
-For any inquiries, reach out to:
-- **Email:** Telalawad@hotmail.com
-- **GitHub Issues:** [Issue Tracker](https://github.com/reco2008/smart-tracking-ai/issues)
-
+### Prerequisites
+- Install **.NET Core SDK**: [Download .NET SDK](https://dotnet.microsoft.com/download/dotnet)
+- Install **MySQL Database**: [Download MySQL](https://dev.mysql.com/downloads/)
+- Clone the repository:  
+  ```bash
+  git clone https://github.com/reco2008/smart-tracking-ai.git
