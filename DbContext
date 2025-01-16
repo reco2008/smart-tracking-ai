@@ -1,0 +1,16 @@
+public class VehicleTrackingContext : DbContext
+{
+    public DbSet<Vehicle> Vehicles { get; set; }
+    public DbSet<Driver> Drivers { get; set; }
+    public DbSet<VehicleMovement> VehicleMovements { get; set; }
+    public DbSet<SpeedReport> SpeedReports { get; set; }
+    public DbSet<DriverBehavior> DriverBehaviors { get; set; }
+    public DbSet<MaintenanceReport> MaintenanceReports { get; set; }
+    public DbSet<TaskReport> TaskReports { get; set; }
+    public DbSet<Notification> Notifications { get; set; }
+    public DbSet<Device> Devices { get; set; }
+
+    public VehicleTrackingContext(DbContextOptions<VehicleTrackingContext> options) : base(options)
+    {
+    }
+}
