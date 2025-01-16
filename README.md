@@ -138,33 +138,6 @@ Set up custom alerts under the Settings section. You can configure notifications
 Managing Vehicles and Drivers
 You can add, remove, and update vehicle and driver details in the Fleet Management section. Each vehicle can be linked to a driver, and maintenance schedules can be tracked.
 
-Development Stages
-The project is divided into several stages for organized development:
-
-1. Analysis and Design (Jan 15 - Jan 20)
-Define system requirements and create initial designs, including database schema and user interface mockups.
-2. Development Basic (Jan 21 - Feb 3)
-Develop the database, backend APIs, and frontend user interface.
-Implement basic vehicle tracking functionality and reporting.
-3. Integration and Testing (Feb 4 - Feb 10)
-Test integration with Teltonika GPS devices.
-Perform performance testing and fix any bugs found.
-4. Advanced Features (Feb 11 - Feb 17)
-Implement additional features such as driver behavior analysis, maintenance reports, and notifications.
-Improve UI/UX for better user experience.
-5. Final Testing and Delivery (Feb 18 - Feb 23)
-Conduct final system testing to ensure everything is functioning as expected.
-Prepare the application for delivery and user training.
-Contributing
-We welcome contributions to improve this project! If you'd like to contribute:
-
-Fork the repository.
-Create a feature branch (git checkout -b feature-name).
-Make your changes.
-Commit your changes (git commit -am 'Add feature').
-Push to the branch (git push origin feature-name).
-Create a new pull request.
-
-
 Contact
-For any questions or issues, feel free to reach out to me at telalawad@hotmail.com.
+For any questions or issues, feel free to reach out to me at reco200814@gmail.com
+.
