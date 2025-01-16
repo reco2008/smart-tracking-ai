@@ -1,1 +1,102 @@
 CREATE DATABASE vehicle_tracking;
+
+Vehicles
+
+CREATE TABLE vehicles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    plate_number VARCHAR(50) NOT NULL,
+    model VARCHAR(50) NOT NULL,
+    manufacturer VARCHAR(50) NOT NULL,
+    registration_date DATE NOT NULL,
+    device_id VARCHAR(50),  -- ID للجهاز المستخدم في تتبع المركبة
+    status ENUM('active', 'inactive') DEFAULT 'active'
+);
+
+Drivers
+CREATE TABLE drivers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    license_number VARCHAR(50) NOT NULL,
+    phone_number VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    status ENUM('active', 'inactive') DEFAULT 'active'
+);
+
+Vehicle Movements
+CREATE TABLE vehicle_movements (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    vehicle_id INT NOT NULL,
+    driver_id INT NOT NULL,
+    timestamp DATETIME NOT NULL,
+    latitude DOUBLE NOT NULL,
+    longitude DOUBLE NOT NULL,
+    speed DOUBLE NOT NULL,
+    fuel_level DOUBLE, -- مستوى الوقود (اختياري)
+    status ENUM('active', 'inactive') DEFAULT 'active',
+    FOREIGN KEY (vehicle_id) REFERENCES vehicles(id),
+    FOREIGN KEY (driver_id) REFERENCES drivers(id)
+);
+Speed Reports
+CREATE TABLE speed_reports (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    vehicle_id INT NOT NULL,
+    timestamp DATETIME NOT NULL,
+    speed DOUBLE NOT NULL,
+    max_speed_limit DOUBLE NOT NULL,
+    is_over_speed BOOLEAN NOT NULL,
+    FOREIGN KEY (vehicle_id) REFERENCES vehicles(id)
+);
+
+Driver Behaviors
+CREATE TABLE driver_behaviors (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    vehicle_id INT NOT NULL,
+    driver_id INT NOT NULL,
+    timestamp DATETIME NOT NULL,
+    behavior_type VARCHAR(50) NOT NULL,  -- مثل "التسارع المفاجئ" أو "الكبح المفاجئ"
+    description TEXT NOT NULL,
+    FOREIGN KEY (vehicle_id) REFERENCES vehicles(id),
+    FOREIGN KEY (driver_id) REFERENCES drivers(id)
+);
+Maintenance Reports
+CREATE TABLE maintenance_reports (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    vehicle_id INT NOT NULL,
+    service_date DATETIME NOT NULL,
+    service_type VARCHAR(50) NOT NULL, -- نوع الخدمة مثل "تغيير الزيت" أو "إصلاح"
+    description TEXT NOT NULL,
+    FOREIGN KEY (vehicle_id) REFERENCES vehicles(id)
+);
+Task Reports
+CREATE TABLE task_reports (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    vehicle_id INT NOT NULL,
+    task_description TEXT NOT NULL, -- وصف المهمة مثل "نقل البضائع"
+    start_time DATETIME NOT NULL,
+    end_time DATETIME NOT NULL,
+    status ENUM('completed', 'pending', 'failed') DEFAULT 'completed',
+    FOREIGN KEY (vehicle_id) REFERENCES vehicles(id)
+);
+Notifications
+CREATE TABLE notifications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    vehicle_id INT NOT NULL,
+    driver_id INT NOT NULL,
+    notification_type VARCHAR(50) NOT NULL,  -- مثل "تجاوز السرعة" أو "سلوك غير آمن"
+    description TEXT NOT NULL,
+    timestamp DATETIME NOT NULL,
+    status ENUM('read', 'unread') DEFAULT 'unread',
+    FOREIGN KEY (vehicle_id) REFERENCES vehicles(id),
+    FOREIGN KEY (driver_id) REFERENCES drivers(id)
+);
+Devices
+CREATE TABLE devices (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    device_type VARCHAR(50) NOT NULL,  -- نوع الجهاز مثل "Teltonika"
+    device_serial_number VARCHAR(50) NOT NULL,  -- رقم السيريال للجهاز
+    installation_date DATETIME NOT NULL,
+    vehicle_id INT NOT NULL,
+    status ENUM('active', 'inactive') DEFAULT 'active',
+    FOREIGN KEY (vehicle_id) REFERENCES vehicles(id)
+);
+
