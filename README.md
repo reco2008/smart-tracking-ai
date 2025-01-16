@@ -1,6 +1,6 @@
 # Vehicle Tracking System
 
-This project is a comprehensive solution for vehicle tracking with features such as real-time monitoring, report generation, and maintenance tracking. The system supports Teltonika devices initially, with the capability to integrate other devices in the future.
+This project is a comprehensive solution for vehicle tracking with features such as real-time monitoring, report generation, and maintenance tracking. The system supports Teltonika devices ,CalAmp,Meiligao initially, with the capability to integrate other devices in the future.
 
 ## Table of Contents
 
