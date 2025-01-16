@@ -1,0 +1,96 @@
+package com.smarttracking;
+
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+public class DeviceDataHandler {
+
+    private static final int PORT = 5050; // Port for listening to device data
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/vehicle_tracking";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "password";
+
+    public static void main(String[] args) {
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+            System.out.println("Server is listening on port " + PORT);
+
+            while (true) {
+                Socket socket = serverSocket.accept();
+                System.out.println("New connection from " + socket.getInetAddress());
+
+                // Handle each connection in a new thread
+                new Thread(() -> handleClient(socket)).start();
+            }
+        } catch (Exception e) {
+            System.err.println("Error in server: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private static void handleClient(Socket socket) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             OutputStream output = socket.getOutputStream()) {
+
+            String data;
+            while ((data = reader.readLine()) != null) {
+                System.out.println("Received: " + data);
+
+                // Parse the data (assuming CSV format: device_id,timestamp,latitude,longitude,speed)
+                String[] parts = data.split(",");
+                if (parts.length == 5) {
+                    String deviceId = parts[0];
+                    String timestamp = parts[1];
+                    double latitude = Double.parseDouble(parts[2]);
+                    double longitude = Double.parseDouble(parts[3]);
+                    double speed = Double.parseDouble(parts[4]);
+
+                    // Save data to the database
+                    saveToDatabase(deviceId, timestamp, latitude, longitude, speed);
+
+                    // Respond to the device
+                    output.write("Data received\n".getBytes());
+                } else {
+                    System.err.println("Invalid data format: " + data);
+                }
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error handling client: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                socket.close();
+            } catch (Exception e) {
+                System.err.println("Error closing socket: " + e.getMessage());
+            }
+        }
+    }
+
+    private static void saveToDatabase(String deviceId, String timestamp, double latitude, double longitude, double speed) {
+        String insertQuery = "INSERT INTO device_data (device_id, timestamp, latitude, longitude, speed) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(insertQuery)) {
+
+            statement.setString(1, deviceId);
+            statement.setString(2, timestamp);
+            statement.setDouble(3, latitude);
+            statement.setDouble(4, longitude);
+            statement.setDouble(5, speed);
+
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("Data saved successfully for device: " + deviceId);
+            }
+        } catch (Exception e) {
+            System.err.println("Error saving to database: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}
