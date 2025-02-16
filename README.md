@@ -1,4 +1,5 @@
-# Comprehensive Report for the Smart Tracking AI Project
+# Comprehensive Report for the Smart Tracking with AI Project
+
 
 ## 1. **Introduction**
 
